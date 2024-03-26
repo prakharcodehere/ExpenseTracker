@@ -1,0 +1,52 @@
+.section{
+  width: 100vw;
+  display: flex;
+
+  padding: 12px;
+
+  justify-content: space-evenly;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card{
+  width: 350px;
+  height: 250px;
+  background-color: darkgray;
+  margin: 12px;
+}
+.expense-history{
+  width: 500px;
+  height: 600px;
+  background-color: rgb(15, 113, 113);
+}
+
+
+
+
+.card-container{
+  width: 90%;
+  height: 400px;
+  background: rgba( 255, 255, 255, 0.2 );
+
+  backdrop-filter: blur( 7px );
+  -webkit-backdrop-filter: blur( 10px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+}
+
+.history-container{
+  width: 90%;
+}
+
+.chart-container{
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border: 2px solid rgb(127, 54, 245);
+    border-radius: 10px;
+    margin-top: 10px;
+}
