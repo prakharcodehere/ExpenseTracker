@@ -98,13 +98,14 @@ const totalPages = Math.ceil(sortedExpenses.length / itemsPerPage);
         </tbody>
       </table>
       <div className="pagination">
-        <button onClick={handleBackPage}>Back</button>
+        <button onClick={handleBackPage} disabled={currentPage === 1} className='paginationBtn'>Back</button>
         {Array.from({ length: totalPages }, (_, index) => (
-          <button key={index + 1} onClick={() => handlePagination(index + 1)}>
+          <button key={index + 1} onClick={() => handlePagination(index + 1)}
+          disabled={index + 1 === currentPage} className='numberBtn'>
             {index + 1}
           </button>
         ))}
-        <button onClick={handleForwardPage}>Forward</button>
+        <button onClick={handleForwardPage} disabled={currentPage === totalPages} className='paginationBtn'>Forward</button>
       </div>
 
 

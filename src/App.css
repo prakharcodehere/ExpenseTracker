@@ -1,52 +1,83 @@
-.section{
-  width: 100vw;
+.section {
+  width: 100%;
   display: flex;
-
   padding: 12px;
-
   justify-content: space-evenly;
 }
-.App{
+
+.App {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-.card{
+.card {
   width: 350px;
   height: 250px;
   background-color: darkgray;
   margin: 12px;
 }
-.expense-history{
-  width: 500px;
+
+.expense-history {
+  width: 100%;
+  max-width: 500px; /* Limit width for smaller screens */
   height: 600px;
   background-color: rgb(15, 113, 113);
 }
 
-
-
-
-.card-container{
+.card-container {
   width: 90%;
+  max-width: 1200px; /* Limit width for larger screens */
   height: 400px;
-  background: rgba( 255, 255, 255, 0.2 );
-
-  backdrop-filter: blur( 7px );
-  -webkit-backdrop-filter: blur( 10px );
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.history-container{
+.history-container {
   width: 90%;
 }
 
-.chart-container{
+.chart-container {
+  width: 100%;
+  max-width: 800px; /* Limit width for smaller screens */
+  height: auto;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   border: 2px solid rgb(127, 54, 245);
-    border-radius: 10px;
-    margin-top: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container {
+    width: 90%;
+    max-width: 90%; /* Adjust max-width as needed */
+    height: auto;
+    margin-top: 10px; /* Add margin for spacing */
+  }
+
+  .card {
+    width: 100%; /* Make cards full width */
+  }
+
+  .expense-history {
+    width: 90%;
+    max-width: 90%; /* Adjust max-width as needed */
+    margin-top: 10px; /* Add margin for spacing */
+  }
+
+  .chart-container {
+    width: 90%;
+    max-width: 90%; /* Adjust max-width as needed */
+    margin-top: 10px; /* Add margin for spacing */
+  }
 }
