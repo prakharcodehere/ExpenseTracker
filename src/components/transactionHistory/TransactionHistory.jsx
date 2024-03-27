@@ -7,9 +7,19 @@ console.log(expenses)
 const [editModalOpen, setEditModalOpen] = useState(false);
 const [selectedExpense, setSelectedExpense] = useState(null);
 const [editedExpense, setEditedExpense] = useState(null);
+const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+;
 
 
 const sortedExpenses = expenses.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+
+
+
+
+
+
+
 
 const openEditModal = (expense) => {
   setSelectedExpense(expense);
@@ -33,8 +43,30 @@ const handleSaveEditedExpense = () => {
 
 
 
+const totalPages = Math.ceil(sortedExpenses.length / itemsPerPage);
+
+  // Pagination
+  const handlePagination = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleBackPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleForwardPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
 
+
+  const indexOfLastExpense = currentPage * itemsPerPage;
+  const indexOfFirstExpense = indexOfLastExpense - itemsPerPage;
+  const currentExpenses = sortedExpenses.slice(indexOfFirstExpense, indexOfLastExpense);
 
 
   return (
@@ -51,7 +83,7 @@ const handleSaveEditedExpense = () => {
           </tr>
         </thead>
         <tbody>
-          {sortedExpenses.map(expense => (
+          {currentExpenses.map(expense => (
             <tr key={expense.id}>
               <td>{expense.title}</td>
               <td>{expense.price}</td>
@@ -65,6 +97,18 @@ const handleSaveEditedExpense = () => {
           ))}
         </tbody>
       </table>
+      <div className="pagination">
+        <button onClick={handleBackPage}>Back</button>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button key={index + 1} onClick={() => handlePagination(index + 1)}>
+            {index + 1}
+          </button>
+        ))}
+        <button onClick={handleForwardPage}>Forward</button>
+      </div>
+
+
+
       <Modal isOpen={editModalOpen} onRequestClose={closeEditModal} className="modal">
         <h2>Edit Transaction</h2>
         <label>Title</label>
